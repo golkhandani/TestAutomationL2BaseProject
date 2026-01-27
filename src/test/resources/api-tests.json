@@ -1,0 +1,76 @@
+{
+  "info": {
+    "_postman_id": "52f9d4b5-3acb-48d8-95f7-c4375fb413c6",
+    "name": "JSONPlaceholder API Tests",
+    "description": "API tests for JSONPlaceholder",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3494174"
+  },
+  "item": [
+    {
+      "name": "Get All Users",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Test 1: Status code is 200 ",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "// Test 2: Response time is acceptable ",
+              "pm.test(\"Response time is less than 1000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);",
+              "});",
+              "// Test 3: Response is JSON ",
+              "pm.test(\"Content-Type is JSON\", function () {",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+              "});",
+              "// Test 4: Response is an array ",
+              "pm.test(\"Response is an array\", function () {",
+              "    var jsonData = pm.response.json(); ",
+              "    pm.expect(jsonData).to.be.an(\"array\");",
+              "});",
+              "// Test 5: Array has 10 users ",
+              "pm.test(\"Array contains 10 users\", function () {",
+              "    var jsonData = pm.response.json(); ",
+              "    pm.expect(jsonData).to.have.lengthOf(10);",
+              "});",
+              "// Test 6: First user has required properties ",
+              "pm.test(\"First user has required properties\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    var firstUser = jsonData[0];",
+              "    pm.expect(firstUser).to.have.property(\"id\");",
+              "    pm.expect(firstUser).to.have.property(\"name\");",
+              "    pm.expect(firstUser).to.have.property(\"email\");",
+              "    pm.expect(firstUser).to.have.property(\"username\");",
+              "});",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{domain}}/users",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
