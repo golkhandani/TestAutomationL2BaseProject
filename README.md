@@ -1,6 +1,6 @@
 # My Project
 
-![CI](https://github.com/username/repo/workflows/CI/badge.svg)
+![CI](https://github.com/{username}/{repo}/workflows/{workflow-name}/badge.svg)
 
 Automated tests run on every push!
 
