@@ -27,7 +27,7 @@ jobs:
 
       - name: Upload test reports
         if: always()  # Upload even if tests fail
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: test-reports
           path: target/surefire-reports/
